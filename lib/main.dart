@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:internetconnectivitycheck/ui/screen/create_new%20_password_screen.dart';
 import 'package:internetconnectivitycheck/ui/screen/home_Screen.dart';
 import 'package:get/get.dart';
+import 'package:internetconnectivitycheck/ui/screen/login_screen.dart';
+import 'package:internetconnectivitycheck/ui/screen/password_changed_success_screen.dart';
+import 'package:internetconnectivitycheck/ui/screen/reset_password_screen.dart';
 import 'package:internetconnectivitycheck/ui/state_manager/dependency_injection.dart';
+import 'package:internetconnectivitycheck/ui/utils/app_colors.dart';
+import 'package:internetconnectivitycheck/ui/widget/my_input_theme.dart';
 
 
 
@@ -20,8 +26,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Network Check ',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+       primarySwatch: Colors.blue,
         useMaterial3: true,
+        inputDecorationTheme: MyInputTheme().theme(),
       ),
       home:const HomeScreen(),
     );

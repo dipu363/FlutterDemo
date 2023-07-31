@@ -15,24 +15,29 @@ class CommonElevatedButton extends StatelessWidget {
     return Container(
 
       decoration: BoxDecoration(
-          color: primaryColor,
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(5)
+          color: dreamBlue,
+          border: Border.all(
+            color: dreamBlue
+          ),
+          borderRadius: BorderRadius.circular(6)
 
 
       ),
       
-      width: double.infinity,
-      height: 50,
+      width: 327,
+      height: 48,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor,
+
+            backgroundColor: dreamBlue,
+            elevation: 0
           ),
           onPressed: onTap,
           child: Text(
             title,
+            textAlign: TextAlign.center,
             style: const TextStyle(
-                fontWeight: FontWeight.w600, color: Colors.white),
+                fontWeight: FontWeight.w500, color: generalWhite,fontSize: 16 ,letterSpacing: .1,fontFamily: 'SFProDisplay'),
           )),
     );
   }
