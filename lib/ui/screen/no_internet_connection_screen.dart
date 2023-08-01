@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:internetconnectivitycheck/ui/screen/home_Screen.dart';
 import 'package:internetconnectivitycheck/ui/utils/style.dart';
 import 'package:internetconnectivitycheck/ui/widget/common_elevated_button.dart';
 class NoInternetConnectionScreen extends StatelessWidget {

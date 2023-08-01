@@ -1,3 +1,4 @@
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:internetconnectivitycheck/ui/utils/style.dart';
 import 'package:internetconnectivitycheck/ui/widget/common_elevated_button.dart';
@@ -16,23 +17,29 @@ class _CheckEmailScreenState extends State<CheckEmailScreen> {
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    Text('Check your Email ' ,style: heading1,),
-                    Text('We have sent a reset password to your email address' ,style: heading2,),
+                    Text('Check your Email ' ,style: heading1,textAlign: TextAlign.center,),
+                    Text('We have sent a reset password to your email address' ,style: heading2,
+                      textAlign: TextAlign.center,),
 
                   ],
                 )
 
             ),
-            CommonElevatedButton(title: 'Open email app', onTap: (){})
+            CommonElevatedButton(title: 'Open email app', onTap: () async {
+               await LaunchApp.openApp(
+                androidPackageName: 'com.google.android.gm',
+                //iosUrlScheme: 'com.google.android.gm://',
+                 openStore: true
+              );
+
+            })
           ],
         ),
       ),
