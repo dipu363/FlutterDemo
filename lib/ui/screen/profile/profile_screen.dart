@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:internetconnectivitycheck/ui/screen/home_Screen.dart';
 import 'package:internetconnectivitycheck/ui/utils/app_colors.dart';
 import 'package:internetconnectivitycheck/ui/utils/style.dart';
 
@@ -31,15 +32,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 130,
                     width: 130,
                     child: CircleAvatar(
-                        child: Image.asset('assets/images/useravatar.png',height: 130,width: 130,)
-                    ),
+                        child: Image.asset(
+                      'assets/images/useravatar.png',
+                      height: 130,
+                      width: 130,
+                    )),
                   ),
-                  SizedBox(height: 10,),
-                  Text('Tasbiul Alom',style: heading1),
-                  Text('Parents',style: heading2)
-
-
-
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('Tasbiul Alom', style: heading1),
+                  Text('Parents', style: heading2)
                 ],
               ),
               const SizedBox(height: 20),
@@ -47,10 +50,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 elevation: 5,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: generalWhite,
-                    border: Border.all(width: 1,color: neutralBlack300),
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      color: generalWhite,
+                      border: Border.all(width: 1, color: neutralBlack300),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -61,7 +63,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             print('edit profile');
                           },
                           child: ListTile(
-
                             leading: const SizedBox(
                               height: 35,
                               width: 35,
@@ -120,7 +121,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               height: 30,
                               width: 30,
                               child: CircleAvatar(
-                                  child: Icon(Icons.notifications_active_outlined,size: 20,)),
+                                  child: Icon(
+                                Icons.notifications_active_outlined,
+                                size: 20,
+                              )),
                             ),
                             title: Text(
                               'Promotions',
@@ -149,19 +153,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             print('support call');
                           },
                           child: ListTile(
-                            leading:  SizedBox(
+                            leading: SizedBox(
                               height: 35,
                               width: 35,
                               child: CircleAvatar(
-                                child: Image.asset('assets/images/supportimage.png',width: 20,height: 20,)
-                              ),
+                                  child: Image.asset(
+                                'assets/images/supportimage.png',
+                                width: 20,
+                                height: 20,
+                              )),
                             ),
                             title: Text(
                               'Support Call',
                               style: heading1.copyWith(fontSize: 20),
                             ),
                             trailing: const Icon(
-                              Icons.arrow_forward_ios,size: 20,
+                              Icons.arrow_forward_ios,
+                              size: 20,
                             ),
                           ),
                         ),
@@ -185,7 +193,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: heading1.copyWith(fontSize: 20),
                             ),
                             trailing: const Icon(
-                              Icons.arrow_forward_ios ,size: 20,
+                              Icons.arrow_forward_ios,
+                              size: 20,
                             ),
                           ),
                         ),
@@ -207,7 +216,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: generalWhite, elevation: 0),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.defaultDialog(
+                          backgroundColor: generalWhite,
+                          barrierDismissible: false,
+                          title: 'Are you sure log out?',
+                          content: const Text('Log out your account'),
+                          contentPadding: const EdgeInsets.all(10),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      color: generalWhite,
+                                      border: Border.all(color: dreamBlue),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: generalWhite, elevation: 0),
+                                    child: const Text('Cancel'),
+                                  ),
+                                ),
+                                Container(
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      color: generalWhite,
+                                      border: Border.all(color: danger500),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.off(const HomeScreen());
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: generalWhite, elevation: 0),
+                                    child: const Text('Log Out'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+
+                        );
+                      },
                       child: const Text(
                         'Log Out',
                         textAlign: TextAlign.center,
