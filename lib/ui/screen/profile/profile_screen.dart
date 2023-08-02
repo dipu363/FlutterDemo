@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:internetconnectivitycheck/ui/screen/home_Screen.dart';
+import 'package:internetconnectivitycheck/ui/screen/profile/edit_profile_screen.dart';
 import 'package:internetconnectivitycheck/ui/utils/app_colors.dart';
 import 'package:internetconnectivitycheck/ui/utils/style.dart';
 
@@ -60,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('edit profile');
+                            Get.to(const EditProfileScreen());
                           },
                           child: ListTile(
                             leading: const SizedBox(
