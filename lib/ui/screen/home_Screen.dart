@@ -9,6 +9,7 @@ import 'package:internetconnectivitycheck/ui/screen/password_changed_success_scr
 import 'package:internetconnectivitycheck/ui/screen/payment_filed_screen.dart';
 import 'package:internetconnectivitycheck/ui/screen/profile/profile_screen.dart';
 import 'package:internetconnectivitycheck/ui/screen/purchased_course_successful_screen.dart';
+import 'package:internetconnectivitycheck/ui/screen/qize/question_paper_screen.dart';
 import 'package:internetconnectivitycheck/ui/screen/registration_screen.dart';
 import 'package:internetconnectivitycheck/ui/screen/reset_password_screen.dart';
 import 'package:internetconnectivitycheck/ui/utils/app_colors.dart';
@@ -74,6 +75,10 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 10,),
               CommonElevatedButton(title: 'profile', onTap: (){
                 Get.to(const ProfileScreen()) ;
+              }),
+              const SizedBox(height: 10,),
+              CommonElevatedButton(title: 'Quiz paper', onTap: (){
+                Get.to(const QuestionPaperScreen()) ;
               }),
               const SizedBox(height: 10,),
             ],
