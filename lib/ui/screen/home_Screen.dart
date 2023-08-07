@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               }),
               const SizedBox(height: 10,),
               CommonElevatedButton(title: 'Quiz paper', onTap: (){
-                Get.to(const QuestionPaperScreen()) ;
+                Get.to(QuestionPaperScreen()) ;
               }),
               const SizedBox(height: 10,),
             ],
