@@ -1,21 +1,30 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internetconnectivitycheck/ui/screen/profile/profile_screen.dart';
 import 'package:internetconnectivitycheck/ui/utils/app_colors.dart';
 import 'package:internetconnectivitycheck/ui/utils/style.dart';
 import 'package:internetconnectivitycheck/ui/widget/common_elevated_button.dart';
 
+
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   bool imageVisible =false;
+  bool isFile= false;
   bool addImageIconVisible =true;
+  File? imageFile  ;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,33 +62,38 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         ),
 
                         child: IconButton(
-                          onPressed: (){
-                            setState(() {
-                              if(!imageVisible){
-                                imageVisible = true;
-                                addImageIconVisible = false;
+                          onPressed: ()async{
+                            if(!isFile){
+                              final picker = ImagePicker();
+                              final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+                              if(pickedFile == null) {
+                                return;
                               }
-                            });
+                              if(!isFile){
+                                final file = File(pickedFile.path);
+                                setState(() {
+                                  imageFile = file;
+                                  imageVisible = true;
+                                  addImageIconVisible = false;
+                                });
+                              }
+                            }
+                            print('Image ifle path $imageFile');
                           },
                             icon: const Icon(Icons.add,size: 20),
                         ),
                       ),
                     ),
                   ),
+                  if(imageFile != null)
                   Visibility(
                     visible: imageVisible,
                     child: Positioned(
                       top: 30,
                       left: 100,
-                      child: SizedBox(
-                        height: 130,
-                        width: 130,
-                        child: CircleAvatar(
-                            child: Image.asset(
-                              'assets/images/useravatar.png',
-                              height: 130,
-                              width: 130,
-                            )),
+                      child: CircleAvatar(
+                        backgroundImage: FileImage(imageFile!),
+                        radius: 60,
                       ),
                     ),
                   ),
@@ -175,3 +189,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 }
+
+/*
+Widget imagePickerButton() => ImagePickerButtonWidget(
+  icon: const Icon(Icons.add),
+  onClicked: () async{
+    if(!imageVisible){
+      imageVisible = true;
+      addImageIconVisible = false;
+    }
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if(pickedFile == null) {
+      return;
+    }
+  },
+);*/
